@@ -1,0 +1,215 @@
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 95vw;
+}
+
+h1 {
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.control-group input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #7f8c8d;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    width: 80px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button#start-btn {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 42px;
+    align-self: flex-end;
+}
+
+button#start-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* Status Panel */
+.status-panel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    background-color: #2c3e50;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.status-win {
+    color: #2ecc71;
+}
+
+.status-lose {
+    color: #e74c3c;
+}
+
+/* The Board Wrapper - Scrollable if too large */
+.board-wrapper {
+    max-width: 90vw;
+    max-height: 60vh;
+    overflow: auto;
+    /* Adds scrollbars if the grid exceeds the wrapper size */
+    border: 3px solid #7f8c8d;
+    border-radius: 4px;
+    background-color: #bdc3c7;
+    /* Classic gray behind tiles */
+    padding: 5px;
+}
+
+/* The Grid */
+.game-board {
+    display: grid;
+    /* Grid columns/rows are set dynamically via JS */
+    gap: 1px;
+    background-color: #7f8c8d;
+    /* Acts as the border between cells */
+}
+
+/* Individual Cell */
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #bdc3c7;
+    border-top: 3px solid #ecf0f1;
+    border-left: 3px solid #ecf0f1;
+    border-bottom: 3px solid #7f8c8d;
+    border-right: 3px solid #7f8c8d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell:active:not(.revealed):not(.flagged) {
+    border: 1px solid #7f8c8d;
+}
+
+/* Cell States */
+.cell.revealed {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    cursor: default;
+}
+
+.cell.flagged {
+    background-color: #bdc3c7;
+}
+
+.cell.flagged::after {
+    content: "🚩";
+    font-size: 16px;
+}
+
+.cell.mine {
+    background-color: #e74c3c;
+    border: 1px solid #c0392b;
+}
+
+.cell.mine::after {
+    content: "💣";
+    font-size: 18px;
+}
+
+/* Number Colors */
+.cell[data-neighbors="1"] {
+    color: #2980b9;
+}
+
+/* Blue */
+.cell[data-neighbors="2"] {
+    color: #27ae60;
+}
+
+/* Green */
+.cell[data-neighbors="3"] {
+    color: #c0392b;
+}
+
+/* Red */
+.cell[data-neighbors="4"] {
+    color: #8e44ad;
+}
+
+/* Purple */
+.cell[data-neighbors="5"] {
+    color: #d35400;
+}
+
+/* Orange */
+.cell[data-neighbors="6"] {
+    color: #16a085;
+}
+
+/* Teal / Dark Green */
+.cell[data-neighbors="7"] {
+    color: #34495e;
+}
+
+/* Dark Gray */
+.cell[data-neighbors="8"] {
+    color: #7f8c8d;
+}
+
+/* Gray */

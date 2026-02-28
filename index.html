@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Minesweeper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <h1>Minesweeper</h1>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="rows">Rows:</label>
+                <input type="number" id="rows" value="10" min="5" max="50">
+            </div>
+            <div class="control-group">
+                <label for="cols">Columns:</label>
+                <input type="number" id="cols" value="10" min="5" max="50">
+            </div>
+            <div class="control-group">
+                <label for="mines">Mines:</label>
+                <input type="number" id="mines" value="15" min="1" max="500">
+            </div>
+            <button id="start-btn">Start New Game</button>
+        </div>
+
+        <div class="status-panel">
+            <span id="game-status">Game Status: Waiting to start...</span>
+            <span id="mines-left">Mines: --</span>
+        </div>
+
+        <div class="board-wrapper">
+            <!-- The game grid will be injected here via JavaScript -->
+            <div id="game-board" class="game-board"></div>
+        </div>
+    </div>
+
+    <!-- Script at the end so it runs after DOM elements are created -->
+    <script src="script.js"></script>
+</body>
+
+</html>
